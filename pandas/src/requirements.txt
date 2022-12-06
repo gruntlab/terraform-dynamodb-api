@@ -1,4 +1,0 @@
-kedro[pandas.CSVDataSet, pandas.ExcelDataSet, pandas.ParquetDataSet]==0.18.2
-ipython>=7.31.1, <8.0
-pandas>=1.5.1
-boto3>=1.24.94

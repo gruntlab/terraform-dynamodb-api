@@ -1,1 +1,0 @@
-Please only ever commit sanitized data (i.e., remove/sanitize identifiable attributes such as email, IP, domain names)

@@ -14,6 +14,6 @@ output "function_name" {
 
 output "base_url" {
   description = "Base URL for API Gateway stage."
-  value = "${aws_apigatewayv2_stage.apigatewayv2_stage.invoke_url}/v1/"
+  value       = "${aws_apigatewayv2_stage.apigatewayv2_stage.invoke_url}/v1/"
 }
 

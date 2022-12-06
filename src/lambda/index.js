@@ -1,5 +1,4 @@
 // Lambda function code
-
 const AWS = require("aws-sdk");
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
@@ -19,7 +18,7 @@ exports.handler = async (event, context) => {
         prefix = event.pathParameters.proxy
         await dynamo
           .delete({
-            TableName: "mock_spur_database",
+            TableName: "mock-spur-database",
             Key: {
               prefix: prefix,
             },
@@ -30,17 +29,18 @@ exports.handler = async (event, context) => {
       case "GET":
         prefix = event.pathParameters.proxy
         if(!prefix){
-          body = await dynamo.scan({ TableName: "mock_spur_database" }).promise();
+          body = await dynamo.scan({ TableName: "mock-spur-database" }).promise();
         }
         else{
-          body = await dynamo
+          var response = await dynamo
             .get({
-              TableName: "mock_spur_database",
+              TableName: "mock-spur-database",
               Key: {
                 prefix: prefix,
               },
             })
             .promise();
+            body = JSON.parse(response["Item"]["data"]);
         }
         break;
       case "PUT":
@@ -48,7 +48,7 @@ exports.handler = async (event, context) => {
         let requestJSON = JSON.parse(event.body);
         await dynamo
           .put({
-            TableName: "mock_spur_database",
+            TableName: "mock-spur-database",
             Item: {
               id: requestJSON.id,
               table: requestJSON.table,

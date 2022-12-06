@@ -1,6 +1,0 @@
-{
-"service_name": {"S": "at-5"},
-"port_number": {"S": "205"},
-"description":  {"S": "AppleTalk Unused"},
-"id": {"S": "54dadfe19c024e95a829747eef916754"}
-}
