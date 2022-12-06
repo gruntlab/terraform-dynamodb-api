@@ -1,0 +1,41 @@
+{
+    version: '2.0',
+    routeKey: 'ANY /v1/{proxy+}',
+    rawPath: '/gruntlab-apigw-stage/v1/accounts/domains',
+    rawQueryString: '',
+    headers: {
+      accept: '*/*',
+      'accept-encoding': 'gzip, deflate, br',
+      'cache-control': 'no-cache',
+      'content-length': '0',
+      host: 'fktgp33b35.execute-api.us-east-1.amazonaws.com',
+      'postman-token': 'cf44669d-351d-417f-9d35-3ff7de57e3b1',
+      'user-agent': 'PostmanRuntime/7.29.2',
+      'x-amzn-trace-id': 'Root=1-63542393-44a1c55977a10c6e0787b82b',
+      'x-forwarded-for': '165.1.204.189',
+      'x-forwarded-port': '443',
+      'x-forwarded-proto': 'https'
+    },
+    requestContext: {
+      accountId: '550416381825',
+      apiId: 'fktgp33b35',
+      domainName: 'fktgp33b35.execute-api.us-east-1.amazonaws.com',
+      domainPrefix: 'fktgp33b35',
+      http: {
+        method: 'GET',
+        path: '/gruntlab-apigw-stage/v1/accounts/domains',
+        protocol: 'HTTP/1.1',
+        sourceIp: '165.1.204.189',
+        userAgent: 'PostmanRuntime/7.29.2'
+      },
+      requestId: 'aap_Jg4CIAMEJjQ=',
+      routeKey: 'ANY /v1/{proxy+}',
+      stage: 'gruntlab-apigw-stage',
+      time: '22/Oct/2022:17:08:35 +0000',
+      timeEpoch: 1666458515944
+    },
+    pathParameters: { proxy: 'accounts/domains' },
+    isBase64Encoded: false
+  }
+
+

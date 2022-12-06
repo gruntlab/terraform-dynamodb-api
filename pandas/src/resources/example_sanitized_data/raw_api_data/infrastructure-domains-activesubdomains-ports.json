@@ -1,0 +1,352 @@
+[
+    {
+        "address": "1.2.3.4",
+        "openPorts": []
+    },
+    {
+        "address": "1.2.3.5",
+        "openPorts": [
+            {
+                "banner": "Apache/2.4.34 (Win32) OpenSSL/1.1.0i PHP/7.2.10",
+                "number": 443,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "Apache/2.4.34 (Win32) OpenSSL/1.1.0i PHP/7.2.10",
+                "number": 80,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": null,
+                "number": 8008,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "Microsoft-IIS/10.0",
+                "number": 8080,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-17T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    },
+    {
+        "address": "11.22.33.44",
+        "openPorts": [
+            {
+                "banner": null,
+                "number": 443,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    },
+    {
+        "address": "22.33.44.55",
+        "openPorts": [
+            {
+                "banner": "Apache/2.4.41 (Ubuntu)",
+                "number": 443,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "Apache/2.4.41 (Ubuntu)",
+                "number": 80,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3\r\n",
+                "number": 22,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    },
+    {
+        "address": "33.44.55.66",
+        "openPorts": [
+            {
+                "banner": "Apache",
+                "number": 80,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "SSH-2.0-OpenSSH_7.8\r\n",
+                "number": 22,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": null,
+                "number": 8008,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-17T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "220 Welcome to domain.com FTP service.\r\n",
+                "number": 21,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-09-23T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    },
+    {
+        "address": "44.55.66.77",
+        "openPorts": [
+            {
+                "banner": "cloudflare",
+                "number": 8443,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 8880,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2095,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2082,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 8080,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2096,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2086,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2087,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 80,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 443,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2083,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2053,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-17T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "cloudflare",
+                "number": 2052,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-17T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    },
+    {
+        "address": "10.20.30.40",
+        "openPorts": [
+            {
+                "banner": null,
+                "number": 8008,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "Apache/2.2.15 (CentOS)",
+                "number": 443,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "Apache/2.2.15 (CentOS)",
+                "number": 80,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "5.5.66-MariaDB",
+                "number": 3306,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-17T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    },
+    {
+        "address": "10.30.50.70",
+        "openPorts": [
+            {
+                "banner": "nginx",
+                "number": 443,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "nginx",
+                "number": 80,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    },
+    {
+        "address": "111.222.111.222",
+        "openPorts": [
+            {
+                "banner": "SSH-2.0-OpenSSH_7.2\r\n",
+                "number": 2222,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-20T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": "Microsoft DNS 6.1.7601 (1DB15D39)",
+                "number": 53,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-19T00:00:00Z",
+                    "transport": "TCP"
+                }
+            },
+            {
+                "banner": null,
+                "number": 8008,
+                "state": {
+                    "status": "OPEN",
+                    "timestamp": "2022-10-18T00:00:00Z",
+                    "transport": "TCP"
+                }
+            }
+        ]
+    }
+]

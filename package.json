@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "api runner",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-bi-ok/terraform-dynamodb-crud-api.git"
+  },
+  "author": "Tim Abiok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/a-bi-ok/terraform-dynamodb-crud-api/issues"
+  },
+  "homepage": "https://github.com/a-bi-ok/terraform-dynamodb-crud-api#readme",
+  "dependencies": {
+    "axios": "^1.1.3",
+    "fs": "^0.0.1-security"
+  }
+}
