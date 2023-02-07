@@ -84,7 +84,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_sse" {
 
 resource "aws_lambda_function" "lambda_function" {
   function_name = "${var.project_label}-lambda-function"
-  filename      = "lambda_function_payload.zip"
+  filename      = "${path.module}/src/lambda_function_payload.zip"
   runtime       = "nodejs16.x"
   handler       = "index.handler"
   role          = aws_iam_role.lambda_exec_role.arn
