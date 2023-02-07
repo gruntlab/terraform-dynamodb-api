@@ -21,10 +21,19 @@ terraform {
   required_version = "~> 1.0"
 }
 
-
 provider "aws" {
   region = var.aws_region
+
+  default_tags {
+    tags = {
+      Owner       = "CbM"
+      Application = "api-lambda"
+      Environment = var.environment
+      Product-Id  = "12345"
+    }
+  }
 }
+
 
 ###########################################################################################################
 # DYNAMODB 
@@ -43,10 +52,6 @@ resource "aws_dynamodb_table" "dynamodb_table" {
     type = "S"
   }
 
-  tags = {
-    Name        = "${var.table_name}"
-    Environment = "${var.environment}"
-  }
 }
 
 ###########################################################################################################
@@ -54,15 +59,24 @@ resource "aws_dynamodb_table" "dynamodb_table" {
 ###########################################################################################################
 
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket        = var.lambda_bucket_name
-  acl           = "private"
+  bucket_prefix = "helloworld-${var.environment}-lambda"
   force_destroy = true
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
+resource "aws_s3_bucket_acl" "lambda_bucket_acl" {
+  bucket = aws_s3_bucket.lambda_bucket.id
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_sse" {
+  bucket = aws_s3_bucket.lambda_bucket.bucket
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
+}
 
 ###########################################################################################################
 # LAMBDA
@@ -70,24 +84,17 @@ resource "aws_s3_bucket" "lambda_bucket" {
 
 resource "aws_lambda_function" "lambda_function" {
   function_name = "${var.project_label}-lambda-function"
-  s3_bucket     = aws_s3_bucket.lambda_bucket.id
-  s3_key        = aws_s3_bucket_object.lambda_s3_bucket_object.key
+  filename      = "lambda_function_payload.zip"
   runtime       = "nodejs16.x"
   handler       = "index.handler"
   role          = aws_iam_role.lambda_exec_role.arn
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
 resource "aws_cloudwatch_log_group" "lambda_cloudwatch_log_group" {
   name              = "/aws/lambda/${aws_lambda_function.lambda_function.function_name}"
   retention_in_days = 30
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
 # managed policy
@@ -107,9 +114,6 @@ resource "aws_iam_role" "lambda_exec_role" {
     ]
   })
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
 resource "aws_iam_role_policy_attachment" "lamda_role_policy_attachment" {
@@ -151,9 +155,6 @@ resource "aws_iam_policy" "dynamodb_access_policy" {
     ]
   })
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
 resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
@@ -162,23 +163,23 @@ resource "aws_iam_role_policy_attachment" "role_policy_attachment" {
 
 }
 
-# s3 object
 data "archive_file" "archive_file" {
   type        = "zip"
   source_dir  = "${path.module}/src/lambda"
-  output_path = "${path.module}/src/lambda.zip"
+  output_path = "${path.module}/src/lambda_function_payload.zip"
 }
 
-resource "aws_s3_bucket_object" "lambda_s3_bucket_object" {
+resource "aws_s3_object" "lambda_s3_bucket_object" {
   bucket = aws_s3_bucket.lambda_bucket.id
-  key    = "lambda.zip"
+  key    = "lambda_function_payload.zip"
   source = data.archive_file.archive_file.output_path
   etag   = filemd5(data.archive_file.archive_file.output_path)
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
+
+
+
+
 
 ###########################################################################################################
 # API GATEWAY
@@ -188,9 +189,6 @@ resource "aws_apigatewayv2_api" "apigatewayv2_api" {
   name          = "${var.project_label}-apigatewayv2-api"
   protocol_type = "HTTP"
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
 resource "aws_apigatewayv2_stage" "apigatewayv2_stage" {
@@ -214,9 +212,6 @@ resource "aws_apigatewayv2_stage" "apigatewayv2_stage" {
     )
   }
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
 # --INTEGRATIONS--
@@ -243,9 +238,6 @@ resource "aws_cloudwatch_log_group" "apigw_cloudwatch_log_group" {
   name              = "/aws/api_gw/${aws_apigatewayv2_api.apigatewayv2_api.name}"
   retention_in_days = 30
 
-  tags = {
-    Environment = "${var.environment}"
-  }
 }
 
 resource "aws_lambda_permission" "lambda_permission" {
