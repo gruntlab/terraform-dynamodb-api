@@ -59,7 +59,7 @@ resource "aws_dynamodb_table" "dynamodb_table" {
 ###########################################################################################################
 
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket_prefix = "helloworld-${var.environment}-lambda"
+  bucket_prefix = "helloworld-${var.environment}-lambda-"
   force_destroy = true
 
 }

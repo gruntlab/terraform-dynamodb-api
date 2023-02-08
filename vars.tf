@@ -6,7 +6,6 @@ variable "aws_region" {
   default     = "us-east-1"
 }
 
-
 variable "table_name" {
   type        = string
   description = "ID of the security group for the CTS load balancer"

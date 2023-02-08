@@ -8,7 +8,6 @@ terraform init -backend-config="dev.backend.tfvars"
 
 terraform plan -var-file="dev.terraform.tfvars"
 
-
 ## Apply
 
 terraform apply -var-file="dev.terraform.tfvars"
