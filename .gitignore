@@ -1,5 +1,10 @@
 # Local .terraform directories
 **/.terraform/*
+***/.terraform
+
+
+**/.terragrunt-cache
+
 
 # .tfstate files
 *.tfstate
@@ -13,7 +18,7 @@ crash.log
 # control as they are data points which are potentially sensitive and subject 
 # to change depending on the environment.
 #
-*.tfvars
+# *.tfvars
 
 */venv
 node_modules/
@@ -44,3 +49,5 @@ response.json
 */.terragrunt-cache/*
 
 
+__azurite_db_queue__.json
+__azurite_db_queue_extent__.json

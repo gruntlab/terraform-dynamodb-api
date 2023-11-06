@@ -16,11 +16,6 @@ variable "environment" {
   description = "Environment"
 }
 
-variable "project_name" {
-  type        = string
-  description = "Project Long Name"
-}
-
 variable "project_label" {
   type        = string
   description = "Project Label"
