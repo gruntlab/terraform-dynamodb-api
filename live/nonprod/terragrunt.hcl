@@ -1,5 +1,5 @@
 terraform {
-  source = "github.com/gruntlab/terraform-dynamodb-api"
+  source = "git::https://github.com/gruntlab/terraform-dynamodb-api.git//modules/http-api"
 
    extra_arguments "custom_vars" {
     commands = [
