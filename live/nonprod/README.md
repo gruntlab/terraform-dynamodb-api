@@ -16,12 +16,12 @@ Each of one of these commands are run via github actions
 
 ## PLAN Terragrunt
 
-```terragrunt run-all plan -var-file="${{ env.ENVIRONMENT }}.terraform.tfvars"```
+```terragrunt run-all plan -var-file="nonprod.terraform.tfvars"```
 
 ## APPLY Terragrunt
 
-```terragrunt run-all apply -var-file="${{ env.ENVIRONMENT }}.terraform.tfvars" --terragrunt-non-interactive```
+```terragrunt run-all apply -var-file="nonprod.terraform.tfvars" --terragrunt-non-interactive```
 
 ## DESTROY Terragrunt
 
-```terragrunt run-all destroy -var-file="${{ env.ENVIRONMENT }}.terraform.tfvars" --terragrunt-non-interactive```
+```terragrunt run-all destroy -var-file="nonprod.terraform.tfvars" --terragrunt-non-interactive```
