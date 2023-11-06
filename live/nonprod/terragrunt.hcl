@@ -16,7 +16,6 @@ terraform {
     ]
   }
 
-
 }
 
 remote_state {
