@@ -1,29 +1,30 @@
 terraform {
-  source = "git::https://github.com/gruntlab/terraform-dynamodb-api.git//modules/http-api"
-
+  // source = "git::https://github.com/gruntlab/terraform-dynamodb-api.git//modules/http-api"
+  source = "../../../modules/http-api"
    extra_arguments "custom_vars" {
     commands = [
       "apply",
       "plan",
       "import",
       "push",
+      "destroy",
       "refresh"
     ]
-
-    # With the get_terragrunt_dir() function, you can use relative paths!
     arguments = [
       "-var-file=nonprod.terraform.tfvars"
     ]
   }
-
 }
 
+locals {
+  backend = jsondecode(read_tfvars_file("nonprod.backend.tfvars"))
+}
 remote_state {
   backend = "s3"
   config = {    
-    bucket         = "octolab-nonprod-tfstate-20231106142704772600000001"
-    key            = "statefiles/serverless/${basename(get_terragrunt_dir())}/terraform.tfstate"
-    region         = "us-east-1"
+    bucket         = get_env("STATE_BUCKET", "${local.backend.bucket}")
+    key            = "$(local.backend.workspace)/${basename(get_terragrunt_dir())}/terraform.tfstate"
+    region         = get_env("REGION", "${local.backend.region}")
     encrypt        = true
     dynamodb_table = "${basename(get_terragrunt_dir())}-lock"
   }
