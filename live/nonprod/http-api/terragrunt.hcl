@@ -22,11 +22,11 @@ locals {
 remote_state {
   backend = "s3"
   config = {    
-    bucket         = get_env("STATE_BUCKET", "${local.backend.bucket}")
-    key            = "$(local.backend.workspace)/${basename(get_terragrunt_dir())}/terraform.tfstate"
-    region         = get_env("REGION", "${local.backend.region}")
+    bucket         = local.backend.bucket
+    key            = local.backend.key
+    region         = local.backend.region
     encrypt        = true
-    dynamodb_table = "${basename(get_terragrunt_dir())}-lock"
+    dynamodb_table = local.backend.dynamodb_table
   }
 }
 
