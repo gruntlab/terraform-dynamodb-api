@@ -22,6 +22,16 @@ variable "project_label" {
 }
 
 
+# variable "workspace" {
+#   type        = string
+#   description = "Workspace"
+# }
+
+# variable "state_bucket" {
+#   type        = string
+#   description = "State Bucket Name"
+# }
+
 
 
 
