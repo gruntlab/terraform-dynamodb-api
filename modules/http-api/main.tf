@@ -59,14 +59,9 @@ resource "aws_dynamodb_table" "dynamodb_table" {
 ###########################################################################################################
 
 resource "aws_s3_bucket" "lambda_bucket" {
-  bucket_prefix = "helloworld-${var.environment}-lambda-"
+  bucket_prefix = "${var.product}-${var.environment}-lambda-"
   force_destroy = true
 
-}
-
-resource "aws_s3_bucket_acl" "lambda_bucket_acl" {
-  bucket = aws_s3_bucket.lambda_bucket.id
-  acl    = "private"
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_sse" {
@@ -83,7 +78,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "bucket_sse" {
 ###########################################################################################################
 
 resource "aws_lambda_function" "lambda_function" {
-  function_name = "${var.project_label}-lambda-function"
+  function_name = "${var.product}-lambda-function"
   filename      = "${path.module}/src/lambda_function_payload.zip"
   runtime       = "nodejs16.x"
   handler       = "index.handler"
@@ -92,7 +87,7 @@ resource "aws_lambda_function" "lambda_function" {
 }
 
 resource "aws_cloudwatch_log_group" "lambda_cloudwatch_log_group" {
-  name              = "/aws/lambda/${aws_lambda_function.lambda_function.function_name}"
+  name              = "/aws/lambda/${var.product}/${aws_lambda_function.lambda_function.function_name}"
   retention_in_days = 30
 
 }
@@ -100,7 +95,7 @@ resource "aws_cloudwatch_log_group" "lambda_cloudwatch_log_group" {
 # managed policy
 
 resource "aws_iam_role" "lambda_exec_role" {
-  name = "${var.project_label}-lambda-exec-role"
+  name = "${var.product}-lambda-exec-role"
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
@@ -124,7 +119,7 @@ resource "aws_iam_role_policy_attachment" "lamda_role_policy_attachment" {
 
 #custom policy
 resource "aws_iam_policy" "dynamodb_access_policy" {
-  name        = "LambdaDynamodbExecution"
+  name        = "${var.product}LambdaDynamodbExecution"
   path        = "/"
   description = "Lambda dynamodb access policy"
 
@@ -186,14 +181,14 @@ resource "aws_s3_object" "lambda_s3_bucket_object" {
 ###########################################################################################################
 
 resource "aws_apigatewayv2_api" "apigatewayv2_api" {
-  name          = "${var.project_label}-apigatewayv2-api"
+  name          = "${var.product}-apigatewayv2-api"
   protocol_type = "HTTP"
 
 }
 
 resource "aws_apigatewayv2_stage" "apigatewayv2_stage" {
   api_id      = aws_apigatewayv2_api.apigatewayv2_api.id
-  name        = "${var.project_label}-serverless-lambda-stage"
+  name        = "${var.product}-serverless-lambda-stage"
   auto_deploy = true
   access_log_settings {
     destination_arn = aws_cloudwatch_log_group.apigw_cloudwatch_log_group.arn
@@ -235,7 +230,7 @@ resource "aws_apigatewayv2_route" "any_apigatewayv2_route" {
 # CLOUDWATCH
 ###########################################################################################################
 resource "aws_cloudwatch_log_group" "apigw_cloudwatch_log_group" {
-  name              = "/aws/api_gw/${aws_apigatewayv2_api.apigatewayv2_api.name}"
+  name              = "/aws/api_gw/${var.product}/${aws_apigatewayv2_api.apigatewayv2_api.name}"
   retention_in_days = 30
 
 }

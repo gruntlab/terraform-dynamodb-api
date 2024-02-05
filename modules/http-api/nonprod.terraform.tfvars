@@ -1,4 +1,6 @@
 aws_region    = "us-east-1"
-table_name    = "mock-octolab-database"
+table_name    = "mock-database"
 environment   = "nonprod"
-project_label = "mock-ocotolab-api"
+product       = "letf"
+# workspace     = "workspace-20231107"
+
